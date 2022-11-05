@@ -1,9 +1,12 @@
-import { useState } from "react"
+import { Main, Navigator } from "./layout/index"
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return <div className="App"></div>
+  return (
+    <div className="App">
+      <Navigator />
+      <Main />
+    </div>
+  )
 }
 
 export default App

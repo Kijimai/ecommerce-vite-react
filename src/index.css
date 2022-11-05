@@ -26,15 +26,18 @@
 - Weights: 400, 700 */
 
 
-html {
-  box-sizing: border-box;
+*, *::after, *::before {
   margin: 0;
   padding: 0;
 }
 
+html {
+  box-sizing: border-box;
+}
+
 :root {
   --orange: 26 100% 55%;
-  --pale-orange: 25 100% 94%
+  --pale-orange: 25 100% 94%;
   --very-dark-blue: 220 13% 13%;
   --dark-grayish-blue: 219 9% 45%;
   --grayish-blue: 220 14% 75%;
@@ -43,5 +46,6 @@ html {
 }
 
 body {
+  box-sizing: inherit;
   min-height: 100vh;
 }
