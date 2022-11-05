@@ -7,7 +7,7 @@ const Delete = () => {
           id="a"
         />
       </defs>
-      <use fill="#C3CAD9" fill-rule="nonzero" xlink:href="#a" />
+      <use fill="#C3CAD9" fill-rule="nonzero" />
     </svg>
   )
 }

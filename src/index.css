@@ -25,14 +25,16 @@
 - Family: [Kumbh Sans](https://fonts.google.com/specimen/Kumbh+Sans)
 - Weights: 400, 700 */
 
-
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-  box-sizing: border-box;
+  font-size: 62.5%;
 }
 
 :root {
@@ -48,4 +50,10 @@ html {
 body {
   box-sizing: inherit;
   min-height: 100vh;
+}
+
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }

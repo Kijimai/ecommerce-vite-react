@@ -7,7 +7,7 @@ const Plus = () => {
           id="b"
         />
       </defs>
-      <use fill="#FF7E1B" fill-rule="nonzero" xlink:href="#b" />
+      <use fill="#FF7E1B" fill-rule="nonzero" />
     </svg>
   )
 }
