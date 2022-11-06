@@ -1,13 +1,16 @@
 import styled from "styled-components"
 import { Logo, Menu, Cart } from "../icons/index"
 import { avatar } from "../assets/imagedata"
+import { useGlobalContext } from "../context/context"
 
 const Navigator = () => {
+  const { showSidebar } = useGlobalContext()
+
   return (
     <NavigatorWrapper>
       <nav>
         <div className="nav-left">
-          <button className="menu-btn">
+          <button onClick={showSidebar} className="menu-btn">
             <Menu />
           </button>
           <div className="logo">

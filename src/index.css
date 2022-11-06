@@ -38,6 +38,7 @@ html {
 }
 
 :root {
+  --black: 0 0% 0%;
   --orange: 26 100% 55%;
   --pale-orange: 25 100% 94%;
   --very-dark-blue: 220 13% 13%;
@@ -48,6 +49,7 @@ html {
 }
 
 body {
+  position: relative;
   box-sizing: inherit;
   min-height: 100vh;
 }
