@@ -1,6 +1,6 @@
 import { useRef } from "react"
 import { Splide, SplideSlide } from "@splidejs/react-splide"
-import '@splidejs/react-splide/css';
+import "@splidejs/react-splide/css"
 import { useGlobalContext } from "../context/context"
 import styled from "styled-components"
 
@@ -41,6 +41,17 @@ const ImageCarousel = ({ productImages, productThumbnails }) => {
   )
 }
 
-const CarouselWrapper = styled.section``
+const CarouselWrapper = styled.section`
+  .thumbnails {
+    display: none;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .thumbnails {
+      display: flex;
+      gap: 3rem;
+    }
+  }
+`
 
 export default ImageCarousel

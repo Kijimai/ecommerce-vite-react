@@ -63,6 +63,11 @@ button {
 
 /* Splide override Styles */
 
+.splide__slide {
+  display: flex;
+  justify-content: center;
+}
+
 .splide img {
   width: 100%;
 }
