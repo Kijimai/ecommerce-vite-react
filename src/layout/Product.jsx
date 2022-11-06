@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import ImageCarousel from "../components/ImageCarousel"
 import ImageOverlay from "../components/ImageOverlay"
+import ProductInfo from "../components/ProductInfo"
 import { productImages, productThumbnails } from "../assets/imagedata"
 import { useGlobalContext } from "../context/context"
 
@@ -20,6 +21,7 @@ const Product = () => {
           productThumbnails={productThumbnails}
         />
       )}
+      <ProductInfo />
     </ProductWrapper>
   )
 }
