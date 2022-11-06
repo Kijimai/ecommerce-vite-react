@@ -4,4 +4,5 @@ export const defaultState = {
   totalCost: 0,
   showSidebar: false,
   widthSize: window.innerWidth,
+  showingOverlay: false,
 }

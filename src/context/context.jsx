@@ -1,7 +1,12 @@
 import { useEffect, useContext, createContext, useReducer } from "react"
 import reducer from "../reducer/reducer"
 import { defaultState } from "../reducer/defaultState"
-import { SHOW_SIDEBAR, HIDE_SIDEBAR } from "../reducer/actions"
+import {
+  SHOW_SIDEBAR,
+  HIDE_SIDEBAR,
+  SHOW_OVERLAY,
+  HIDE_OVERLAY,
+} from "../reducer/actions"
 
 const AppContext = createContext()
 
@@ -17,15 +22,23 @@ const AppProvider = ({ children }) => {
   }
 
   const showImageOverlay = () => {
-
+    dispatch({ type: SHOW_OVERLAY })
   }
 
   const hideImageOverlay = () => {
-    
+    dispatch({ type: HIDE_OVERLAY })
   }
 
   return (
-    <AppContext.Provider value={{ state, showSidebar, hideSidebar }}>
+    <AppContext.Provider
+      value={{
+        state,
+        showSidebar,
+        hideSidebar,
+        showImageOverlay,
+        hideImageOverlay,
+      }}
+    >
       {children}
     </AppContext.Provider>
   )

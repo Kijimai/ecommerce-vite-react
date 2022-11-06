@@ -15,5 +15,10 @@ const productImages = [
   { url: prodImg4, alt: "product slide 4" },
 ]
 
-const productThumbnails = [prodThumb1, prodThumb2, prodThumb3, prodThumb4]
+const productThumbnails = [
+  { url: prodThumb1, alt: "product thumbnail slide 1" },
+  { url: prodThumb2, alt: "product thumbnail slide 2" },
+  { url: prodThumb3, alt: "product thumbnail slide 3" },
+  { url: prodThumb4, alt: "product thumbnail slide 4" },
+]
 export { avatar, productImages, productThumbnails }
