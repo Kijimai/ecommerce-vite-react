@@ -16,6 +16,14 @@ const AppProvider = ({ children }) => {
     dispatch({ type: HIDE_SIDEBAR })
   }
 
+  const showImageOverlay = () => {
+
+  }
+
+  const hideImageOverlay = () => {
+    
+  }
+
   return (
     <AppContext.Provider value={{ state, showSidebar, hideSidebar }}>
       {children}

@@ -8,6 +8,12 @@ import prodImg2 from "./image-product-2.jpg"
 import prodImg3 from "./image-product-3.jpg"
 import prodImg4 from "./image-product-4.jpg"
 
-const productImages = [prodImg1, prodImg2, prodImg3, prodImg4]
+const productImages = [
+  { url: prodImg1, alt: "product slide 1" },
+  { url: prodImg2, alt: "product slide 2" },
+  { url: prodImg3, alt: "product slide 3" },
+  { url: prodImg4, alt: "product slide 4" },
+]
+
 const productThumbnails = [prodThumb1, prodThumb2, prodThumb3, prodThumb4]
 export { avatar, productImages, productThumbnails }

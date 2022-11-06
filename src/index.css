@@ -52,11 +52,17 @@ body {
   position: relative;
   box-sizing: inherit;
   min-height: 100vh;
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: "Kumbh Sans", sans-serif;
 }
 
 button {
   border: none;
   background: transparent;
   cursor: pointer;
+}
+
+/* Splide override Styles */
+
+.splide img {
+  width: 100%;
 }

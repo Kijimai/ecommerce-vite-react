@@ -16,7 +16,9 @@ const Sidebar = ({ isShowing }) => {
           {sideBarLinks.map((link, idx) => {
             return (
               <li key={idx}>
-                <a href="#">{link}</a>
+                <a onClick={hideSidebar} href="#">
+                  {link}
+                </a>
               </li>
             )
           })}
