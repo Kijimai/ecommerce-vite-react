@@ -12,7 +12,7 @@ const Sidebar = ({ isShowing }) => {
         <button onClick={hideSidebar}>
           <Close />
         </button>
-        <ul>
+        <ul className="sidebar-links">
           {sideBarLinks.map((link, idx) => {
             return (
               <li key={idx}>
@@ -37,12 +37,28 @@ const SidebarWrapper = styled.aside`
   background-color: hsl(var(--black) / 0.7);
   user-select: none;
   pointer-events: none;
-  
+
   nav {
     padding: 2.5rem;
     max-width: 25rem;
     height: 100%;
     background-color: hsl(var(--white));
+
+    .sidebar-links {
+      margin-top: 5.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: inherit;
+      list-style: none;
+
+      a {
+        color: hsl(var(--black));
+        text-decoration: none;
+      }
+    }
   }
 
   &.active {
