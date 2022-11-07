@@ -12,11 +12,25 @@ const ProductInfo = ({
 }) => {
   return (
     <InfoWrapper>
-      <h2 className="company-name">{companyName}</h2>
-      <p className="product-name">{productName}</p>
-      <p className="product-description">{productDescription}</p>
-      <p>{productPrice}</p>
-      <p>{isOnSale && salePercent}</p>
+      <div className="inner-info">
+        <h2 className="company-name">{companyName}</h2>
+        <p className="product-name">{productName}</p>
+        <p className="product-description">{productDescription}</p>
+        <div className="pricing">
+          <p class="price">
+            $
+            {isOnSale
+              ? (productPrice * salePercent).toFixed(2)
+              : productPrice.toFixed(2)}
+          </p>
+          {isOnSale && (
+            <p className="percent">{salePercent.toFixed(2) * 100 + "%"}</p>
+          )}
+          {isOnSale && (
+            <p className="original-price">${productPrice.toFixed(2)}</p>
+          )}
+        </div>
+      </div>
       <ProductControls />
     </InfoWrapper>
   )
@@ -25,23 +39,59 @@ const ProductInfo = ({
 const InfoWrapper = styled.section`
   padding: 2.4rem;
 
-  .company-name {
-    font-size: 1.2rem;
-    color: hsl(var(--orange));
-    margin-bottom: 2rem;
-  }
+  .inner-info {
+    margin-bottom: 1.6rem;
 
-  .product-name {
-    font-size: 2.8rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-  }
+    .company-name {
+      font-size: 1.2rem;
+      color: hsl(var(--orange));
+      margin-bottom: 2rem;
+    }
 
-  .product-description {
-    font-size: 1.5rem;
-    color: hsl(var(--dark-grayish-blue));
-    line-height: 2.5rem;
-    margin-bottom: 2.4rem;
+    .product-name {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-description {
+      font-size: 1.5rem;
+      color: hsl(var(--dark-grayish-blue));
+      line-height: 2.5rem;
+      margin-bottom: 2.4rem;
+    }
+
+    .pricing {
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr;
+      gap: 1.6rem;
+
+      .price {
+        font-size: 2.8rem;
+        font-weight: 700;
+        grid-column: 1 / 2;
+      }
+
+      .percent {
+        color: hsl(var(--orange));
+        background-color: hsl(var(--pale-orange));
+        font-size: 1.6rem;
+        font-weight: 700;
+        padding: 0.7rem 0.8rem;
+        border-radius: 0.6rem;
+        grid-column: 2 / 3;
+      }
+
+      .original-price {
+        text-decoration: line-through;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: hsl(var(--grayish-blue));
+        grid-column: 4 / 5;
+      }
+    }
   }
 `
 

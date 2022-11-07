@@ -34,6 +34,7 @@ const SidebarWrapper = styled.aside`
   left: 0;
   opacity: 0;
   width: 0;
+  z-index: 1000;
   height: 100vh;
   transition: 0.3s ease width, 0.2s ease opacity;
   background-color: hsl(var(--black) / 0.7);

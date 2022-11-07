@@ -66,6 +66,11 @@ const NavigatorWrapper = styled.header`
     .cart-btn {
       position: relative;
 
+      svg,
+      path {
+        fill: hsl(var(--black));
+      }
+
       span {
         user-select: none;
         position: absolute;

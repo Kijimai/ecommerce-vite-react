@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="App">
       <Navigator />
-      <Main />
       <Sidebar isShowing={state.showSidebar} />
+      <Main />
     </div>
   )
 }
