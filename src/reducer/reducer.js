@@ -9,11 +9,20 @@ const reducer = (state, action) => {
     case "HIDE_OVERLAY":
       return { ...state, showingOverlay: false }
     case "INCREASE_AMOUNT":
-
-      return { ...state }  
+      const increasedAmount = state.amount + 1
+      return { ...state, amount: increasedAmount }
     case "DECREASE_AMOUNT":
+      const decreasedAmount = () => {
+        if(state.amount <= 0) return 0
+        return state.amount - 1
+      }
+      return { ...state, amount: decreasedAmount() }
+    case "ADD_TO_CART":
+      console.log("Adding to cart")
 
-      return { ...state}   
+      return { ...state }
+    case "UPDATE_CART":
+      return { ...state }
     case "READ_SCREENWIDTH":
       return { ...state, screenWidth: action.payload }
     default:

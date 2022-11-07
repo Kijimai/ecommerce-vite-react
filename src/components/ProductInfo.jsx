@@ -11,6 +11,7 @@ const ProductInfo = ({
   isOnSale,
   salePercent,
 }) => {
+
   return (
     <InfoWrapper>
       <div className="inner-info">
@@ -18,7 +19,7 @@ const ProductInfo = ({
         <p className="product-name">{productName}</p>
         <p className="product-description">{productDescription}</p>
         <div className="pricing">
-          <p class="price">
+          <p className="price">
             $
             {isOnSale
               ? (productPrice * salePercent).toFixed(2)

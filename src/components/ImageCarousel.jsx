@@ -31,7 +31,7 @@ const ImageCarousel = ({ productImages, productThumbnails }) => {
         {productThumbnails.map((thumbnail, idx) => {
           const { url, alt } = thumbnail
           return (
-            <button onClick={() => carouselRef.current.go(idx)}>
+            <button key={idx} onClick={() => carouselRef.current.go(idx)}>
               <img src={url} alt={alt} />
             </button>
           )
@@ -42,8 +42,6 @@ const ImageCarousel = ({ productImages, productThumbnails }) => {
 }
 
 const CarouselWrapper = styled.section`
-  
-
   .splide__track {
     height: 100%;
   }

@@ -2,19 +2,37 @@ import styled from "styled-components"
 import PropTypes from "prop-types"
 import { Plus, Minus, Cart } from "../icons/index"
 import Button from "./Button"
-const ProductControls = ({ increaseAmount, decreaseAmount, productId }) => {
+import { useGlobalContext } from "../context/context"
+import { data } from "../utils/data"
+const ProductControls = ({ productId }) => {
+  const { increaseAmount, decreaseAmount, removeItem, addToCart, state } =
+    useGlobalContext()
+
   return (
     <ControlsWrapper>
       <div className="inner-controls">
-        <button onClick={() => decreaseAmount(productId)}>
+        <button
+          onClick={() => {
+            decreaseAmount(productId)
+          }}
+        >
           <Minus />
         </button>
         <span className="amount">0</span>
-        <button onClick={() => increaseAmount(productId)}>
+        <button
+          onClick={() => {
+            increaseAmount(productId)
+          }}
+        >
           <Plus />
         </button>
       </div>
-      <Button color={"#FFFFFF"}>
+      <Button
+        func={() => {
+          addToCart(state.amount, data)
+        }}
+        color={"#FFFFFF"}
+      >
         <Cart />
         Add to Cart
       </Button>

@@ -10,6 +10,8 @@ import {
   INCREASE_AMOUNT,
   DECREASE_AMOUNT,
   REMOVE_ITEM,
+  ADD_TO_CART,
+  UPDATE_CART,
 } from "../reducer/actions"
 
 const AppContext = createContext()
@@ -33,12 +35,26 @@ const AppProvider = ({ children }) => {
     dispatch({ type: HIDE_OVERLAY })
   }
 
-  const increaseAmount = () => {
-    dispatch({ type: INCREASE_AMOUNT, payload: state.amount })
+  const increaseAmount = (id) => {
+    dispatch({ type: INCREASE_AMOUNT, payload: { id } })
   }
 
-  const decreaseAmount = () => {
-    dispatch({ type: DECREASE_AMOUNT, payload: state.amount })
+  const decreaseAmount = (id) => {
+    dispatch({ type: DECREASE_AMOUNT, payload: { id } })
+  }
+
+  const addToCart = (amount, item) => {
+    dispatch({
+      type: ADD_TO_CART,
+      payload: {
+        item,
+        amount,
+      },
+    })
+  }
+
+  const updateCart = () => {
+    dispatch({ type: UPDATE_CART })
   }
 
   const removeItem = () => {
@@ -48,6 +64,10 @@ const AppProvider = ({ children }) => {
   const readScreenWidth = () => {
     dispatch({ type: READ_SCREENWIDTH, payload: window.innerWidth })
   }
+
+  useEffect(() => {
+    console.log(state.amount)
+  }, [state.amount])
 
   useEffect(() => {
     window.addEventListener("resize", readScreenWidth)
@@ -65,6 +85,9 @@ const AppProvider = ({ children }) => {
         hideImageOverlay,
         increaseAmount,
         decreaseAmount,
+        addToCart,
+        updateCart,
+        removeItem,
       }}
     >
       {children}
