@@ -8,18 +8,21 @@ const reducer = (state, action) => {
       return { ...state, showingOverlay: true }
     case "HIDE_OVERLAY":
       return { ...state, showingOverlay: false }
+    case "SHOW_CART":
+      return { ...state }
+    case "HIDE_CART":
+      return { ...state }
     case "INCREASE_AMOUNT":
       const increasedAmount = state.amount + 1
       return { ...state, amount: increasedAmount }
     case "DECREASE_AMOUNT":
       const decreasedAmount = () => {
-        if(state.amount <= 0) return 0
+        if (state.amount <= 0) return 0
         return state.amount - 1
       }
       return { ...state, amount: decreasedAmount() }
     case "ADD_TO_CART":
       console.log("Adding to cart")
-
       return { ...state }
     case "UPDATE_CART":
       return { ...state }

@@ -6,6 +6,8 @@ import {
   HIDE_SIDEBAR,
   SHOW_OVERLAY,
   HIDE_OVERLAY,
+  SHOW_CART,
+  HIDE_CART,
   READ_SCREENWIDTH,
   INCREASE_AMOUNT,
   DECREASE_AMOUNT,
@@ -33,6 +35,14 @@ const AppProvider = ({ children }) => {
 
   const hideImageOverlay = () => {
     dispatch({ type: HIDE_OVERLAY })
+  }
+
+  const showCart = () => {
+    dispatch({ type: SHOW_CART })
+  }
+
+  const hideCart = () => {
+    dispatch({ type: HIDE_CART })
   }
 
   const increaseAmount = (id) => {
@@ -83,6 +93,8 @@ const AppProvider = ({ children }) => {
         hideSidebar,
         showImageOverlay,
         hideImageOverlay,
+        showCart,
+        hideCart,
         increaseAmount,
         decreaseAmount,
         addToCart,
