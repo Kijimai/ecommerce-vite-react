@@ -7,6 +7,9 @@ import {
   SHOW_OVERLAY,
   HIDE_OVERLAY,
   READ_SCREENWIDTH,
+  INCREASE_AMOUNT,
+  DECREASE_AMOUNT,
+  REMOVE_ITEM,
 } from "../reducer/actions"
 
 const AppContext = createContext()
@@ -30,6 +33,18 @@ const AppProvider = ({ children }) => {
     dispatch({ type: HIDE_OVERLAY })
   }
 
+  const increaseAmount = () => {
+    dispatch({ type: INCREASE_AMOUNT, payload: state.amount })
+  }
+
+  const decreaseAmount = () => {
+    dispatch({ type: DECREASE_AMOUNT, payload: state.amount })
+  }
+
+  const removeItem = () => {
+    dispatch({ type: REMOVE_ITEM, payload: state.cart })
+  }
+
   const readScreenWidth = () => {
     dispatch({ type: READ_SCREENWIDTH, payload: window.innerWidth })
   }
@@ -48,6 +63,8 @@ const AppProvider = ({ children }) => {
         hideSidebar,
         showImageOverlay,
         hideImageOverlay,
+        increaseAmount,
+        decreaseAmount,
       }}
     >
       {children}

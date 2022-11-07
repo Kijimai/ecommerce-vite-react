@@ -1,4 +1,5 @@
 export const data = {
+  productId: 1,
   companyName: "Sneaker Company",
   productName: "Fall Limited Edition Sneakers",
   productDescription:
@@ -6,4 +7,5 @@ export const data = {
   productPrice: 250,
   isOnSale: true,
   salePercent: 0.5,
+  amount: 0,
 }

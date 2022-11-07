@@ -2,15 +2,15 @@ import styled from "styled-components"
 import PropTypes from "prop-types"
 import { Plus, Minus, Cart } from "../icons/index"
 import Button from "./Button"
-const ProductControls = ({ increaseAmount, decreaseAmount }) => {
+const ProductControls = ({ increaseAmount, decreaseAmount, productId }) => {
   return (
     <ControlsWrapper>
       <div className="inner-controls">
-        <button>
+        <button onClick={() => decreaseAmount(productId)}>
           <Minus />
         </button>
         <span className="amount">0</span>
-        <button>
+        <button onClick={() => increaseAmount(productId)}>
           <Plus />
         </button>
       </div>

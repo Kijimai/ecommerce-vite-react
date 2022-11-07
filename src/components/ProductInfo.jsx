@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import ProductControls from "./ProductControls"
 
 const ProductInfo = ({
+  productId,
   companyName,
   productName,
   productDescription,
@@ -31,7 +32,7 @@ const ProductInfo = ({
           )}
         </div>
       </div>
-      <ProductControls />
+      <ProductControls productId={productId} />
     </InfoWrapper>
   )
 }
