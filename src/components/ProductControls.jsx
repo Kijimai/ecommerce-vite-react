@@ -18,7 +18,7 @@ const ProductControls = ({ productId }) => {
         >
           <Minus />
         </button>
-        <span className="amount">0</span>
+        <span className="amount">{state.amount}</span>
         <button
           onClick={() => {
             increaseAmount(productId)

@@ -54,6 +54,7 @@ const AppProvider = ({ children }) => {
   }
 
   const addToCart = (amount, item) => {
+    if (!amount) return
     dispatch({
       type: ADD_TO_CART,
       payload: {

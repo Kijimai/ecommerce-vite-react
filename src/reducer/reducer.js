@@ -22,9 +22,21 @@ const reducer = (state, action) => {
       }
       return { ...state, amount: decreasedAmount() }
     case "ADD_TO_CART":
-      console.log("Adding to cart")
-      return { ...state }
+      const { item, amount } = action.payload
+      const hasItem = state.cart.find((product) => {
+        return product.productId === item.productId
+      })
+      if (hasItem) {
+        console.log("the item exists")
+        const updatedItem = { ...hasItem, amount }
+        return { ...state, amount: 0, cart: [updatedItem] }
+      } else {
+        const newItem = { ...item, amount }
+        return { ...state, amount: 0, cart: [...state.cart, newItem] }
+      }
     case "UPDATE_CART":
+      return { ...state }
+    case "REMOVE_ITEM":
       return { ...state }
     case "READ_SCREENWIDTH":
       return { ...state, screenWidth: action.payload }
