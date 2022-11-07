@@ -42,6 +42,12 @@ const ImageCarousel = ({ productImages, productThumbnails }) => {
 }
 
 const CarouselWrapper = styled.section`
+  
+
+  .splide__track {
+    height: 100%;
+  }
+
   .thumbnails {
     display: none;
   }

@@ -3,6 +3,6 @@ export const defaultState = {
   amount: 0,
   totalCost: 0,
   showSidebar: false,
-  widthSize: window.innerWidth,
+  screenWidth: window.innerWidth,
   showingOverlay: false,
 }

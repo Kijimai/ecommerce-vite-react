@@ -4,7 +4,7 @@ import ImageOverlay from "../components/ImageOverlay"
 import ProductInfo from "../components/ProductInfo"
 import { productImages, productThumbnails } from "../assets/imagedata"
 import { useGlobalContext } from "../context/context"
-
+import { data } from "../utils/data"
 const Product = () => {
   const { showingOverlay } = useGlobalContext()
 
@@ -21,13 +21,14 @@ const Product = () => {
           productThumbnails={productThumbnails}
         />
       )}
-      <ProductInfo />
+      <ProductInfo {...data} />
     </ProductWrapper>
   )
 }
 
 const ProductWrapper = styled.article`
   display: flex;
+  flex-direction: column;
 `
 
 export default Product

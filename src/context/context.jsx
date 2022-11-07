@@ -6,6 +6,7 @@ import {
   HIDE_SIDEBAR,
   SHOW_OVERLAY,
   HIDE_OVERLAY,
+  READ_SCREENWIDTH,
 } from "../reducer/actions"
 
 const AppContext = createContext()
@@ -28,6 +29,16 @@ const AppProvider = ({ children }) => {
   const hideImageOverlay = () => {
     dispatch({ type: HIDE_OVERLAY })
   }
+
+  const readScreenWidth = () => {
+    dispatch({ type: READ_SCREENWIDTH, payload: window.innerWidth })
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", readScreenWidth)
+    console.log(state.screenWidth)
+    return () => window.removeEventListener("resize", readScreenWidth)
+  }, [state.screenWidth])
 
   return (
     <AppContext.Provider

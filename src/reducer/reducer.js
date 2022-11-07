@@ -8,6 +8,8 @@ const reducer = (state, action) => {
       return { ...state, showingOverlay: true }
     case "HIDE_OVERLAY":
       return { ...state, showingOverlay: false }
+    case "READ_SCREENWIDTH":
+      return { ...state, screenWidth: action.payload }
     default:
       return state
   }
