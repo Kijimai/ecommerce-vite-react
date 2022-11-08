@@ -16,7 +16,7 @@ const FloatingCart = ({ className }) => {
             return <SingleCartItem key={cartItem.productId} {...cartItem} />
           })
         ) : (
-          <p class="empty">Your cart is empty.</p>
+          <p className="empty">Your cart is empty.</p>
         )}
         {state.cart.length > 0 && <Button>Checkout</Button>}
       </ul>
@@ -62,7 +62,7 @@ const FloatingCartWrapper = styled.div`
     padding: 2.4rem;
     min-height: 18.8rem;
     gap: 2.4rem;
-    
+
     .empty {
       text-align: center;
       font-size: 1.6rem;

@@ -37,11 +37,11 @@ const reducer = (state, action) => {
     case "UPDATE_CART":
       return { ...state }
     case "REMOVE_ITEM":
-      const { id: itemId } = action.payload
-      const newCart = state.cart.filter((product) => {
-        return product.productId !== itemId
-      })
-      return { ...state, cart: [...state.cart] }
+      // const { id: itemId } = action.payload
+      // const newCart = state.cart.filter((product) => {
+      //   return product.productId !== itemId
+      // })
+      return { ...state, cart: [] }
     case "READ_SCREENWIDTH":
       return { ...state, screenWidth: action.payload }
     default:

@@ -14,7 +14,11 @@ const SingleCartItem = ({
 }) => {
   const { removeItem } = useGlobalContext()
 
-  const actualPrice = isOnSale ? productPrice * salePercent : productPrice
+  const actualPrice = isOnSale
+    ? (productPrice * salePercent).toFixed(2)
+    : productPrice.toFixed(2)
+
+  const totalPrice = (actualPrice * amount).toFixed(2)
 
   return (
     <SingleItemWrapper>
@@ -24,7 +28,7 @@ const SingleCartItem = ({
         <p className="total">
           ${actualPrice}
           &nbsp;x&nbsp;{amount}&nbsp;
-          <span>${(actualPrice * amount).toFixed(2)}</span>
+          <span>${totalPrice}</span>
         </p>
       </div>
       <button onClick={() => removeItem(productId)}>
@@ -50,6 +54,7 @@ const SingleItemWrapper = styled.li`
     .name {
       font-size: 1.6rem;
       color: hsl(var(--dark-grayish-blue));
+      margin-bottom: 0.4rem;
     }
     .total {
       font-size: 1.6rem;
