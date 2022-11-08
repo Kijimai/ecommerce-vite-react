@@ -28,6 +28,7 @@ const ProductControls = ({ productId }) => {
         </button>
       </div>
       <Button
+        className="cart"
         func={() => {
           addToCart(state.amount, data)
         }}

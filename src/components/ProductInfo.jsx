@@ -84,6 +84,7 @@ const InfoWrapper = styled.section`
         padding: 0.7rem 0.8rem;
         border-radius: 0.6rem;
         grid-column: 2 / 3;
+        text-align: center;
       }
 
       .original-price {

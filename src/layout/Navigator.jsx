@@ -1,10 +1,11 @@
 import styled from "styled-components"
 import { Logo, Menu, Cart } from "../icons/index"
 import { avatar } from "../assets/imagedata"
+import FloatingCart from "../components/FloatingCart"
 import { useGlobalContext } from "../context/context"
 
 const Navigator = () => {
-  const { showSidebar } = useGlobalContext()
+  const { showSidebar, showCart, hideCart, state } = useGlobalContext()
 
   return (
     <NavigatorWrapper>
@@ -18,13 +19,23 @@ const Navigator = () => {
           </div>
         </div>
         <div className="nav-right">
-          <button className="cart-btn">
+          <button
+            onClick={() => {
+              if (state.showingCart) {
+                hideCart()
+              } else {
+                showCart()
+              }
+            }}
+            className="cart-btn"
+          >
             <Cart />
-            <span>3</span>
+            <span>{state.cart.length}</span>
           </button>
           <button className="avatar-btn">
             <img src={avatar} alt="avatar" />
           </button>
+          <FloatingCart className={`${state.showingCart ? "active" : ""}`} />
         </div>
       </nav>
     </NavigatorWrapper>
@@ -59,6 +70,7 @@ const NavigatorWrapper = styled.header`
   }
 
   .nav-right {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 1.6rem;

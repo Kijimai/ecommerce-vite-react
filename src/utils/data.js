@@ -1,3 +1,5 @@
+import { productImages } from "../assets/imagedata"
+
 export const data = {
   productId: 1,
   companyName: "Sneaker Company",
@@ -8,4 +10,5 @@ export const data = {
   isOnSale: true,
   salePercent: 0.5,
   amount: 0,
+  images: productImages,
 }

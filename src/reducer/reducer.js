@@ -9,9 +9,9 @@ const reducer = (state, action) => {
     case "HIDE_OVERLAY":
       return { ...state, showingOverlay: false }
     case "SHOW_CART":
-      return { ...state }
+      return { ...state, showingCart: true }
     case "HIDE_CART":
-      return { ...state }
+      return { ...state, showingCart: false }
     case "INCREASE_AMOUNT":
       const increasedAmount = state.amount + 1
       return { ...state, amount: increasedAmount }
@@ -37,7 +37,11 @@ const reducer = (state, action) => {
     case "UPDATE_CART":
       return { ...state }
     case "REMOVE_ITEM":
-      return { ...state }
+      const { id: itemId } = action.payload
+      const newCart = state.cart.filter((product) => {
+        return product.productId !== itemId
+      })
+      return { ...state, cart: [...state.cart] }
     case "READ_SCREENWIDTH":
       return { ...state, screenWidth: action.payload }
     default:

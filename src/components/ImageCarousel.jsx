@@ -5,7 +5,9 @@ import { useGlobalContext } from "../context/context"
 import styled from "styled-components"
 
 const ImageCarousel = ({ productImages, productThumbnails }) => {
-  const {} = useGlobalContext()
+  const {
+    state: { screenWidth },
+  } = useGlobalContext()
   const carouselRef = useRef(null)
 
   return (
@@ -13,6 +15,7 @@ const ImageCarousel = ({ productImages, productThumbnails }) => {
       <Splide
         options={{
           pagination: false,
+          height: `${screenWidth < 601 ? "30rem" : "auto"}`,
         }}
         ref={carouselRef}
       >

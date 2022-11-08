@@ -46,6 +46,8 @@ html {
   --grayish-blue: 220 14% 75%;
   --light-grayish-blue: 223 64% 98%;
   --white: 0 0% 100%;
+
+  --divider: 219 35% 92%;
 }
 
 body {

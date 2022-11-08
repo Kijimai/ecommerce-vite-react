@@ -68,8 +68,8 @@ const AppProvider = ({ children }) => {
     dispatch({ type: UPDATE_CART })
   }
 
-  const removeItem = () => {
-    dispatch({ type: REMOVE_ITEM, payload: state.cart })
+  const removeItem = (id) => {
+    dispatch({ type: REMOVE_ITEM, payload: { id } })
   }
 
   const readScreenWidth = () => {

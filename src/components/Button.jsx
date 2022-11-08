@@ -1,8 +1,12 @@
 import styled from "styled-components"
 import PropTypes from "prop-types"
 
-const Button = ({ func, children, color }) => {
-  return <StyledButton onClick={func}>{children}</StyledButton>
+const Button = ({ func, children, className }) => {
+  return (
+    <StyledButton className={className} onClick={func}>
+      {children}
+    </StyledButton>
+  )
 }
 
 const StyledButton = styled.button`
@@ -17,7 +21,9 @@ const StyledButton = styled.button`
   color: hsl(var(--white));
   font-size: 1.6rem;
   font-weight: 700;
-  box-shadow: 0px 2rem 5rem -2rem hsl(var(--orange));
+  &.cart {
+    box-shadow: 0px 2rem 5rem -2rem hsl(var(--orange));
+  }
 `
 
 Button.propTypes = {
