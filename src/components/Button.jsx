@@ -21,8 +21,15 @@ const StyledButton = styled.button`
   color: hsl(var(--white));
   font-size: 1.6rem;
   font-weight: 700;
+
   &.cart {
     box-shadow: 0px 2rem 5rem -2rem hsl(var(--orange));
+  }
+
+  @media screen and (min-width: 768px) {
+    &.cart {
+      box-shadow: none;
+    }
   }
 `
 
