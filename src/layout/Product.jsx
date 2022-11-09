@@ -14,7 +14,6 @@ const Product = () => {
         productImages={productImages}
         productThumbnails={productThumbnails}
       />
-      <div className="product-info"></div>
       {showingOverlay && (
         <ImageOverlay
           productImages={productImages}
@@ -29,6 +28,15 @@ const Product = () => {
 const ProductWrapper = styled.article`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  
+  @media only screen and (min-width: 1000px) {
+    margin: 0 auto;
+    margin-top: 9rem;
+    gap: 11rem;
+    display: grid;
+    grid-template-columns: 44.5rem 44.5rem;
+  }
 `
 
 export default Product

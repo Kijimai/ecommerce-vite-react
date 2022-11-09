@@ -14,6 +14,7 @@ import {
   REMOVE_ITEM,
   ADD_TO_CART,
   UPDATE_CART,
+  GET_TOTAL_CART,
 } from "../reducer/actions"
 
 const AppContext = createContext()
@@ -68,6 +69,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: UPDATE_CART })
   }
 
+  const getTotalCartAmount = () => {
+    dispatch({ type: GET_TOTAL_CART })
+  }
+
   const removeItem = (id) => {
     dispatch({ type: REMOVE_ITEM, payload: { id } })
   }
@@ -77,12 +82,12 @@ const AppProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    console.log(state.amount)
-  }, [state.amount])
+    getTotalCartAmount()
+  }, [state.amount, state.cart])
 
   useEffect(() => {
     window.addEventListener("resize", readScreenWidth)
-    console.log(state.screenWidth)
+    // Cleanup function to remove eventlistener after reading screenwidth
     return () => window.removeEventListener("resize", readScreenWidth)
   }, [state.screenWidth])
 
@@ -101,6 +106,7 @@ const AppProvider = ({ children }) => {
         addToCart,
         updateCart,
         removeItem,
+        getTotalCartAmount,
       }}
     >
       {children}

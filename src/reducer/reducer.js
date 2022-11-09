@@ -42,6 +42,11 @@ const reducer = (state, action) => {
       //   return product.productId !== itemId
       // })
       return { ...state, cart: [] }
+    case "GET_TOTAL_CART":
+      const totalCartCount = state.cart.reduce((total, currentItem) => {
+        return total + currentItem.amount
+      }, 0)
+      return { ...state, totalCartSize: totalCartCount }
     case "READ_SCREENWIDTH":
       return { ...state, screenWidth: action.payload }
     default:

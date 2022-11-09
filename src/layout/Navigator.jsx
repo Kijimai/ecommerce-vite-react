@@ -4,6 +4,8 @@ import { avatar } from "../assets/imagedata"
 import FloatingCart from "../components/FloatingCart"
 import { useGlobalContext } from "../context/context"
 
+const navLinks = ["collections", "men", "women", "about", "contact"]
+
 const Navigator = () => {
   const { showSidebar, showCart, hideCart, state } = useGlobalContext()
 
@@ -17,6 +19,15 @@ const Navigator = () => {
           <div className="logo">
             <Logo />
           </div>
+          <ul className="nav-links">
+            {navLinks.map((link, idx) => {
+              return (
+                <li key={idx}>
+                  <a href="#">{link}</a>
+                </li>
+              )
+            })}
+          </ul>
         </div>
         <div className="nav-right">
           <button
@@ -30,7 +41,7 @@ const Navigator = () => {
             className="cart-btn"
           >
             <Cart />
-            <span>{state.cart.length}</span>
+            <span>{state.totalCartSize}</span>
           </button>
           <button className="avatar-btn">
             <img src={avatar} alt="avatar" />
@@ -43,7 +54,9 @@ const Navigator = () => {
 }
 
 const NavigatorWrapper = styled.header`
+  position: relative;
   padding: 2.4rem;
+  border-bottom: 1px solid hsl(var(--divider));
 
   img,
   svg {
@@ -66,6 +79,10 @@ const NavigatorWrapper = styled.header`
       @media only screen and (min-width: 768px) {
         display: none;
       }
+    }
+
+    .nav-links {
+      display: none;
     }
   }
 
@@ -100,9 +117,56 @@ const NavigatorWrapper = styled.header`
     .avatar-btn {
       height: 2.4rem;
       width: 2.4rem;
-
+      border-radius: 50%;
       img {
         width: 100%;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding-bottom: 4rem;
+    .nav-left {
+      .nav-links {
+        display: flex;
+        gap: 3.2rem;
+        list-style: none;
+        margin-left: 3rem;
+        a {
+          text-decoration: none;
+          font-size: 1.5rem;
+          text-transform: capitalize;
+          color: hsl(var(--dark-grayish-blue));
+        }
+      }
+    }
+
+    .nav-right {
+      gap: 2.4rem;
+
+      .avatar-btn {
+        &:hover {
+          outline: 2px solid hsl(var(--orange));
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1000px) {
+    padding: 4rem 0 4rem;
+    max-width: 80%;
+    margin: 0 auto;
+
+    .nav-right {
+      gap: 4.7rem;
+      justify-content: space-between;
+      .avatar-btn {
+        height: 5rem;
+        width: 5rem;
+
+        img {
+          width: 100%;
+        }
       }
     }
   }

@@ -77,8 +77,6 @@ SingleCartItem.propTypes = {
 }
 
 SingleCartItem.defaultProps = {
-  productId: null,
-  productName: "N/A",
   productPrice: 0,
   amount: 0,
   isOnSale: false,

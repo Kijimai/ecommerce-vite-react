@@ -11,7 +11,6 @@ const ProductInfo = ({
   isOnSale,
   salePercent,
 }) => {
-
   return (
     <InfoWrapper>
       <div className="inner-info">
@@ -40,6 +39,11 @@ const ProductInfo = ({
 
 const InfoWrapper = styled.section`
   padding: 2.4rem;
+
+  @media screen and (min-width: 768px) {
+    margin: 0 auto;
+    max-width: 90%;
+  }
 
   .inner-info {
     margin-bottom: 1.6rem;
@@ -93,6 +97,50 @@ const InfoWrapper = styled.section`
         font-weight: 700;
         color: hsl(var(--grayish-blue));
         grid-column: 4 / 5;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+
+    .inner-info {
+      .company-name {
+        font-size: 1.3rem;
+        line-height: 1.6rem;
+        margin-bottom: 2.4rem;
+      }
+
+      .product-name {
+        font-size: 4.4rem;
+        line-height: 4.8rem;
+        margin-bottom: 3.2rem;
+      }
+
+      .product-description {
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+      }
+
+      .pricing {
+        grid-template-rows: 1fr 1fr;
+        gap: 0 1.6rem;
+        .price {
+          grid-column: 1 / 2;
+          grid-row: 1;
+        }
+
+        .percent {
+          justify-self: start;
+        }
+
+        .original-price {
+          grid-column: 1 / 2;
+          grid-row: 2;
+        }
       }
     }
   }

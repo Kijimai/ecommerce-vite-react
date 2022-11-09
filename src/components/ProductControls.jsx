@@ -57,6 +57,23 @@ const ControlsWrapper = styled.div`
       line-height: 2rem;
     }
   }
+
+
+
+  @media only screen and (min-width: 1000px) {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    gap: 1.6rem;
+
+    .inner-controls {
+      margin-bottom: 0;
+      grid-column: 1 /3;
+    }
+    .cart {
+      grid-column: 3 / 6;
+    }
+  }
 `
 
 export default ProductControls
