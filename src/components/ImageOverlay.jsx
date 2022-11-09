@@ -49,6 +49,7 @@ const OverlayWrapper = styled.section`
   left: 0;
   height: 100%;
   width: 100%;
+  z-index: 1000;
   background-color: hsl(var(--black) / 0.7);
   display: flex;
   justify-content: center;

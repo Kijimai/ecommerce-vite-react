@@ -5,6 +5,8 @@ const reducer = (state, action) => {
     case "HIDE_SIDEBAR":
       return { ...state, showSidebar: false }
     case "SHOW_OVERLAY":
+      // Only allow for overlay to show above 768px screen width
+      if (state.screenWidth < 769) return state
       return { ...state, showingOverlay: true }
     case "HIDE_OVERLAY":
       return { ...state, showingOverlay: false }
