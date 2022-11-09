@@ -40,6 +40,10 @@ const ProductInfo = ({
 const InfoWrapper = styled.section`
   padding: 2.4rem;
 
+  @media screen and (min-width: 600px) {
+    padding: 2.4rem 4rem;
+  }
+
   @media screen and (min-width: 768px) {
     margin: 0 auto;
     max-width: 90%;

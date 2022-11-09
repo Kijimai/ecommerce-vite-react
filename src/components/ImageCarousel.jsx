@@ -11,9 +11,7 @@ const ImageCarousel = ({ productImages, productThumbnails }) => {
   } = useGlobalContext()
   const carouselRef = useRef(null)
 
-  useEffect(() => {
-    
-  }, [])
+  useEffect(() => {}, [])
 
   return (
     <CarouselWrapper>
@@ -98,6 +96,11 @@ const CarouselWrapper = styled.section`
 
     .splide__slide img {
       border-radius: 1.5rem;
+    }
+
+    .splide__arrow--next,
+    .splide__arrow--prev {
+      display: none;
     }
   }
 `
