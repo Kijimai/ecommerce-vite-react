@@ -29,13 +29,17 @@ const ProductWrapper = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+
   @media only screen and (min-width: 1000px) {
     margin: 0 auto;
     margin-top: 9rem;
-    gap: 11rem;
+    gap: 5rem;
     display: grid;
     grid-template-columns: 44.5rem 44.5rem;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    gap: 11rem;
   }
 `
 
