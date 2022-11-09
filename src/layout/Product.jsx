@@ -6,7 +6,6 @@ import { productImages, productThumbnails } from "../assets/imagedata"
 import { useGlobalContext } from "../context/context"
 import { data } from "../utils/data"
 const Product = () => {
-  const { showingOverlay } = useGlobalContext()
 
   return (
     <ProductWrapper>
@@ -14,12 +13,6 @@ const Product = () => {
         productImages={productImages}
         productThumbnails={productThumbnails}
       />
-      {showingOverlay && (
-        <ImageOverlay
-          productImages={productImages}
-          productThumbnails={productThumbnails}
-        />
-      )}
       <ProductInfo {...data} />
     </ProductWrapper>
   )

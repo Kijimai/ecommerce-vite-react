@@ -3,14 +3,14 @@ import { Close } from "../icons/index"
 import { Splide, SplideSlide } from "@splidejs/react-splide"
 import '@splidejs/react-splide/css';
 
-const ImageOverlay = ({ productImages }) => {
+const ImageOverlay = ({ productImages, overlayRef }) => {
 
   return (
     <OverlayWrapper>
       <button>
         <Close />
       </button>
-      <Splide>
+      <Splide ref={overlayRef}>
         {productImages.map((image, idx) => {
           const { url, alt } = image
           return (

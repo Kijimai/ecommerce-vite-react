@@ -1,61 +1,76 @@
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState } from "react"
 import { Splide, SplideSlide } from "@splidejs/react-splide"
 import "@splidejs/react-splide/css"
 import { useGlobalContext } from "../context/context"
+import ImageOverlay from "./ImageOverlay"
 import styled from "styled-components"
 
 const ImageCarousel = ({ productImages, productThumbnails }) => {
-  // const [currentIndex, setCurrentIndex] = useState(null)
+  const [currentThumbnailIdx, setCurrentThumbnailIdx] = useState(0)
   const {
     state: { screenWidth },
+    showingOverlay,
   } = useGlobalContext()
-  const carouselRef = useRef(null)
 
-  useEffect(() => {}, [])
+  // Carousel and Overlay refs
+  const carouselRef = useRef(null)
+  const overlayRef = useRef(null)
+
+  const splideOptions = {
+    pagination: false,
+    height: `${
+      screenWidth < 601 ? "30rem" : screenWidth < 768 ? "40rem" : "44.5rem"
+    }`,
+    type: "loop",
+    autoWidth: false,
+    perPage: 1,
+    drag: false,
+    isNavigation: true,
+  }
 
   return (
-    <CarouselWrapper>
-      <Splide
-        options={{
-          pagination: false,
-          height: `${
-            screenWidth < 601
-              ? "30rem"
-              : screenWidth < 768
-              ? "40rem"
-              : "44.5rem"
-          }`,
-        }}
-        ref={carouselRef}
-      >
-        {productImages.map((image, idx) => {
-          const { url, alt } = image
-          return (
-            <SplideSlide key={idx}>
-              <button>
+    <>
+      <CarouselWrapper>
+        <Splide options={splideOptions} ref={carouselRef}>
+          {productImages.map((image, idx) => {
+            const { url, alt } = image
+            return (
+              <SplideSlide key={idx}>
+                <button onClick={""}>
+                  <img src={url} alt={alt} />
+                </button>
+              </SplideSlide>
+            )
+          })}
+        </Splide>
+        <div className="thumbnails">
+          {productThumbnails.map((thumbnail, idx) => {
+            const { url, alt } = thumbnail
+            return (
+              <button
+                className={`thumb-btn ${
+                  currentThumbnailIdx === idx ? "active" : ""
+                }`}
+                key={idx}
+                onClick={() => {
+                  carouselRef.current.go(idx)
+                  setCurrentThumbnailIdx(idx)
+                }}
+              >
                 <img src={url} alt={alt} />
               </button>
-            </SplideSlide>
-          )
-        })}
-      </Splide>
-      <div className="thumbnails">
-        {productThumbnails.map((thumbnail, idx) => {
-          const { url, alt } = thumbnail
-          return (
-            <button
-              className="thumb-btn"
-              key={idx}
-              onClick={() => {
-                carouselRef.current.go(idx)
-              }}
-            >
-              <img src={url} alt={alt} />
-            </button>
-          )
-        })}
-      </div>
-    </CarouselWrapper>
+            )
+          })}
+        </div>
+      </CarouselWrapper>
+      {showingOverlay && (
+        <ImageOverlay
+          overlayRef={overlayRef}
+          productImages={productImages}
+          productThumbnails={productThumbnails}
+        />
+      )}
+    </>
   )
 }
 
@@ -87,6 +102,17 @@ const CarouselWrapper = styled.section`
       .thumb-btn {
         border-radius: 1rem;
         overflow: hidden;
+        transition: 0.3s ease opacity;
+        &.active {
+          img {
+            opacity: 0.5;
+          }
+          outline: 0.2rem solid hsl(var(--orange));
+        }
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
     }
   }
