@@ -1,47 +1,115 @@
+import { useState } from "react"
 import styled from "styled-components"
 import { Close } from "../icons/index"
 import { Splide, SplideSlide } from "@splidejs/react-splide"
-import '@splidejs/react-splide/css';
+import "@splidejs/react-splide/css"
+import { useGlobalContext } from "../context/context"
 
-const ImageOverlay = ({ productImages, overlayRef }) => {
-
+const ImageOverlay = ({ productImages, productThumbnails, overlayRef }) => {
+  const { hideImageOverlay, showingOverlay } = useGlobalContext()
+  const [] = useState(0)
   return (
     <OverlayWrapper>
-      <button>
-        <Close />
-      </button>
-      <Splide ref={overlayRef}>
-        {productImages.map((image, idx) => {
-          const { url, alt } = image
-          return (
-            <SplideSlide>
+      <div className="inner-overlay">
+        <button className="close-btn" onClick={hideImageOverlay}>
+          <Close />
+        </button>
+        <Splide
+          options={{ autoWidth: false, pagination: false, type: "loop" }}
+          ref={overlayRef}
+        >
+          {productImages.map((image, idx) => {
+            const { url, alt } = image
+            return (
+              <SplideSlide>
+                <button key={idx}>
+                  <img src={url} alt={alt} />
+                </button>
+              </SplideSlide>
+            )
+          })}
+        </Splide>
+        <div className="thumbnails">
+          {productThumbnails.map((thumbnail, idx) => {
+            return (
               <button key={idx}>
-                <img src={url} alt={alt} />
+                <img src={thumbnail.url} alt={thumbnail.alt} />
               </button>
-            </SplideSlide>
-          )
-        })}
-      </Splide>
+            )
+          })}
+        </div>
+      </div>
     </OverlayWrapper>
   )
 }
 
 const OverlayWrapper = styled.section`
-  display: none;
-  pointer-events: none;
-  user-select: none;
-  opacity: 0;
   position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
   background-color: hsl(var(--black) / 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  &.active {
-    opacity: 1;
-  }
+  .inner-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  @media only screen and (min-width: 768px) {
-    display: block;
+    .close-btn {
+      margin-bottom: 2.4rem;
+    }
+
+    .splide {
+      width: 55rem;
+      height: 55rem;
+      margin-bottom: 4rem;
+    }
+
+    .splide__slide {
+      width: 55rem;
+      height: 55rem;
+    }
+
+    .splide__arrow {
+      opacity: 1;
+    }
+
+    .splide__arrow:disabled {
+      opacity: 1;
+    }
+
+    .splide__arrow--prev {
+      left: -1.5rem;
+    }
+
+    .splide__arrow--next {
+      right: -1.5rem;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+    .close-btn {
+      align-self: flex-end;
+    }
+
+    .thumbnails {
+      display: flex;
+      justify-content: space-around;
+      gap: 3.1rem;
+
+      button {
+        overflow: hidden;
+        height: 8.8rem;
+        width: 8.8rem;
+        border-radius: 1rem;
+      }
+    }
   }
 `
 

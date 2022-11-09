@@ -8,8 +8,8 @@ import styled from "styled-components"
 const ImageCarousel = ({ productImages, productThumbnails }) => {
   const [currentThumbnailIdx, setCurrentThumbnailIdx] = useState(0)
   const {
-    state: { screenWidth },
-    showingOverlay,
+    state: { screenWidth, showingOverlay },
+    showImageOverlay,
   } = useGlobalContext()
 
   // Carousel and Overlay refs
@@ -36,7 +36,7 @@ const ImageCarousel = ({ productImages, productThumbnails }) => {
             const { url, alt } = image
             return (
               <SplideSlide key={idx}>
-                <button onClick={""}>
+                <button onClick={showImageOverlay}>
                   <img src={url} alt={alt} />
                 </button>
               </SplideSlide>
