@@ -25,7 +25,6 @@ const ImageCarousel = ({ productImages, productThumbnails }) => {
     autoWidth: false,
     perPage: 1,
     drag: false,
-    isNavigation: true,
   }
 
   return (

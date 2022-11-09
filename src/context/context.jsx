@@ -88,6 +88,9 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     window.addEventListener("resize", readScreenWidth)
     // Cleanup function to remove eventlistener after reading screenwidth
+    if (state.screenWidth < 768 && state.showingOverlay) {
+      dispatch({ type: HIDE_OVERLAY })
+    }
     return () => window.removeEventListener("resize", readScreenWidth)
   }, [state.screenWidth])
 

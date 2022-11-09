@@ -71,24 +71,29 @@ const OverlayWrapper = styled.section`
     }
 
     .splide__slide {
+      overflow: hidden;
+      border-radius: 1.5rem;
       width: 55rem;
       height: 55rem;
     }
 
-    .splide__arrow {
-      opacity: 1;
-    }
-
+    .splide__arrow,
     .splide__arrow:disabled {
       opacity: 1;
     }
 
+    .splide__arrow {
+      background-color: hsl(var(--white));
+      height: 5.6rem;
+      width: 5.6rem;
+    }
+
     .splide__arrow--prev {
-      left: -1.5rem;
+      left: -2.8rem;
     }
 
     .splide__arrow--next {
-      right: -1.5rem;
+      right: -2.8rem;
     }
 
     img {
