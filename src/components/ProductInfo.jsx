@@ -46,7 +46,6 @@ const InfoWrapper = styled.section`
 
   @media screen and (min-width: 768px) {
     margin: 0 auto;
-    max-width: 90%;
   }
 
   .inner-info {
@@ -110,6 +109,7 @@ const InfoWrapper = styled.section`
     flex-direction: column;
     justify-content: center;
     padding: 0;
+    flex-basis: 44.5rem;
 
     .inner-info {
       .company-name {

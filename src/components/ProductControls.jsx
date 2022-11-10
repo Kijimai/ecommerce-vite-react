@@ -58,8 +58,6 @@ const ControlsWrapper = styled.div`
     }
   }
 
-
-
   @media only screen and (min-width: 1000px) {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

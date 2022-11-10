@@ -6,7 +6,6 @@ import { productImages, productThumbnails } from "../assets/imagedata"
 import { useGlobalContext } from "../context/context"
 import { data } from "../utils/data"
 const Product = () => {
-
   return (
     <ProductWrapper>
       <ImageCarousel
@@ -28,7 +27,6 @@ const ProductWrapper = styled.article`
   }
 
   @media only screen and (min-width: 1000px) {
-    margin: 0 auto;
     margin-top: 9rem;
     gap: 5rem;
     display: grid;
