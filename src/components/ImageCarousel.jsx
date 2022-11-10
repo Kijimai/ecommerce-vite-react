@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import { Splide, SplideSlide } from "@splidejs/react-splide"
 import "@splidejs/react-splide/css"
 import { useGlobalContext } from "../context/context"
@@ -6,7 +6,7 @@ import ImageOverlay from "./ImageOverlay"
 import styled from "styled-components"
 
 const ImageCarousel = ({ productImages, productThumbnails }) => {
-  const [currentThumbnailIdx, setCurrentThumbnailIdx] = useState(0)
+  const [imageIndex, setImageIndex] = useState(0)
   const {
     state: { screenWidth, showingOverlay },
     showImageOverlay,
@@ -30,14 +30,23 @@ const ImageCarousel = ({ productImages, productThumbnails }) => {
   return (
     <>
       <CarouselWrapper>
-        <Splide options={splideOptions} ref={carouselRef}>
+        <Splide
+          onClick={() => {
+            showImageOverlay()
+            if (carouselRef.current && overlayRef.current) {
+              overlayRef.current.sync(carouselRef.current.splide)
+              setImageIndex(carouselRef.current.splide.index)
+            }
+          }}
+          options={splideOptions}
+          ref={carouselRef}
+          onMove={() => setImageIndex(carouselRef.current.splide.index)}
+        >
           {productImages.map((image, idx) => {
             const { url, alt } = image
             return (
               <SplideSlide key={idx}>
-                <button onClick={showImageOverlay}>
-                  <img src={url} alt={alt} />
-                </button>
+                <img src={url} alt={alt} />
               </SplideSlide>
             )
           })}
@@ -47,13 +56,11 @@ const ImageCarousel = ({ productImages, productThumbnails }) => {
             const { url, alt } = thumbnail
             return (
               <button
-                className={`thumb-btn ${
-                  currentThumbnailIdx === idx ? "active" : ""
-                }`}
+                className={`thumb-btn ${imageIndex === idx ? "active" : ""}`}
                 key={idx}
                 onClick={() => {
+                  setImageIndex(idx)
                   carouselRef.current.go(idx)
-                  setCurrentThumbnailIdx(idx)
                 }}
               >
                 <img src={url} alt={alt} />
@@ -64,9 +71,12 @@ const ImageCarousel = ({ productImages, productThumbnails }) => {
       </CarouselWrapper>
       {showingOverlay && (
         <ImageOverlay
+          carouselRef={carouselRef}
           overlayRef={overlayRef}
           productImages={productImages}
           productThumbnails={productThumbnails}
+          imageIndex={imageIndex}
+          setImageIndex={setImageIndex}
         />
       )}
     </>
@@ -75,7 +85,12 @@ const ImageCarousel = ({ productImages, productThumbnails }) => {
 
 const CarouselWrapper = styled.section`
   .splide {
+    cursor: pointer;
     width: 100%;
+  }
+
+  .splide__track {
+    /* margin: 0 auto; */
   }
 
   .splide__arrow {
@@ -88,6 +103,7 @@ const CarouselWrapper = styled.section`
   img {
     display: block;
     width: 100%;
+    object-fit: cover;
   }
 
   .thumbnails {
@@ -113,6 +129,7 @@ const CarouselWrapper = styled.section`
         border-radius: 1rem;
         overflow: hidden;
         transition: 0.3s ease opacity;
+
         &.active {
           img {
             opacity: 0.5;

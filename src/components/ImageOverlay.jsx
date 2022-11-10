@@ -1,13 +1,20 @@
-import { useState } from "react"
+import { useEffect } from "react"
 import styled from "styled-components"
 import { Close } from "../icons/index"
 import { Splide, SplideSlide } from "@splidejs/react-splide"
 import "@splidejs/react-splide/css"
 import { useGlobalContext } from "../context/context"
 
-const ImageOverlay = ({ productImages, productThumbnails, overlayRef }) => {
-  const { hideImageOverlay, showingOverlay } = useGlobalContext()
-  const [] = useState(0)
+const ImageOverlay = ({
+  productImages,
+  productThumbnails,
+  overlayRef,
+  carouselRef,
+  imageIndex,
+  setImageIndex,
+}) => {
+  const { hideImageOverlay } = useGlobalContext()
+
   return (
     <OverlayWrapper>
       <div className="inner-overlay">
@@ -17,12 +24,16 @@ const ImageOverlay = ({ productImages, productThumbnails, overlayRef }) => {
         <Splide
           options={{ autoWidth: false, pagination: false, type: "loop" }}
           ref={overlayRef}
+          onMove={() => {
+            setImageIndex(overlayRef.current.splide.index)
+            carouselRef.current.go(overlayRef.current.splide.index)
+          }}
         >
           {productImages.map((image, idx) => {
             const { url, alt } = image
             return (
-              <SplideSlide>
-                <button key={idx}>
+              <SplideSlide key={idx}>
+                <button>
                   <img src={url} alt={alt} />
                 </button>
               </SplideSlide>
@@ -32,7 +43,14 @@ const ImageOverlay = ({ productImages, productThumbnails, overlayRef }) => {
         <div className="thumbnails">
           {productThumbnails.map((thumbnail, idx) => {
             return (
-              <button key={idx}>
+              <button
+                className={`thumb-btn ${imageIndex === idx ? "active" : ""}`}
+                onClick={() => {
+                  overlayRef.current.go(idx)
+                  carouselRef.current.go(idx)
+                }}
+                key={idx}
+              >
                 <img src={thumbnail.url} alt={thumbnail.alt} />
               </button>
             )
@@ -65,6 +83,7 @@ const OverlayWrapper = styled.section`
     }
 
     .splide {
+      cursor: pointer;
       width: 55rem;
       height: 55rem;
       margin-bottom: 4rem;
@@ -108,6 +127,23 @@ const OverlayWrapper = styled.section`
       display: flex;
       justify-content: space-around;
       gap: 3.1rem;
+
+      .thumb-btn {
+        border-radius: 1rem;
+        overflow: hidden;
+        transition: 0.3s ease opacity;
+
+        &.active {
+          img {
+            opacity: 0.5;
+          }
+          outline: 0.2rem solid hsl(var(--orange));
+        }
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
 
       button {
         overflow: hidden;
