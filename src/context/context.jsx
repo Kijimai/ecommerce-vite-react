@@ -91,6 +91,10 @@ const AppProvider = ({ children }) => {
     if (state.screenWidth < 768 && state.showingOverlay) {
       dispatch({ type: HIDE_OVERLAY })
     }
+    if (state.screenWidth > 768 && state.showSidebar) {
+      dispatch({ type: HIDE_SIDEBAR })
+    }
+
     return () => window.removeEventListener("resize", readScreenWidth)
   }, [state.screenWidth])
 
