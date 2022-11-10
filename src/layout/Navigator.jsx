@@ -41,7 +41,7 @@ const Navigator = () => {
             className="cart-btn"
           >
             <Cart />
-            <span>{state.totalCartSize}</span>
+            {state.totalCartSize > 0 && <span>{state.totalCartSize}</span>}
           </button>
           <button className="avatar-btn">
             <img src={avatar} alt="avatar" />
@@ -145,6 +145,8 @@ const NavigatorWrapper = styled.header`
       gap: 2.4rem;
 
       .avatar-btn {
+        height: 3.5rem;
+        width: 3.5rem;
         &:hover {
           outline: 2px solid hsl(var(--orange));
         }

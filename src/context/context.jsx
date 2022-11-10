@@ -87,7 +87,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     window.addEventListener("resize", readScreenWidth)
-    // Cleanup function to remove eventlistener after reading screenwidth
+    // Cleanup function to remove eventlistener after reading screenwidth, hide overlay if showing when screen width is below 768
     if (state.screenWidth < 768 && state.showingOverlay) {
       dispatch({ type: HIDE_OVERLAY })
     }

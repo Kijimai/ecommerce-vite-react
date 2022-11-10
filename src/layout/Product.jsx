@@ -23,6 +23,10 @@ const ProductWrapper = styled.article`
   flex-direction: column;
   justify-content: center;
 
+  @media only screen and (min-width: 768px) {
+    margin-top: 5rem;
+  }
+
   @media only screen and (min-width: 1000px) {
     margin: 0 auto;
     margin-top: 9rem;
