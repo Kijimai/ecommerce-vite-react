@@ -29,10 +29,10 @@ Users should be able to:
 
 ### Screenshot
 
-![Mobile Screenshot](./src/screenshots/sc1.png)
-![Desktop Screenshot 1](./src/screenshots/sc2.png)
-![Desktop Screenshot 2](./src/screenshots/sc3.png)
-![Desktop Screenshot 3](./src/screenshots/sc4.png)
+![Mobile Screenshot](./screenshots/sc1.png)
+![Desktop Screenshot 1](./screenshots/sc2.png)
+![Desktop Screenshot 2](./screenshots/sc3.png)
+![Desktop Screenshot 3](./screenshots/sc4.png)
 
 ### Links
 
