@@ -119,8 +119,17 @@ const OverlayWrapper = styled.section`
       display: block;
       width: 100%;
     }
+
     .close-btn {
       align-self: flex-end;
+
+      svg path {
+        transition: 0.2s ease fill;
+      }
+
+      &:hover svg path {
+        fill: hsl(var(--orange));
+      }
     }
 
     .thumbnails {
