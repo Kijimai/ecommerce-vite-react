@@ -43,9 +43,6 @@ Users should be able to:
 
 ### Built with
 
-- ReactJS
-- ViteJS
-- Styled Components
 - Mobile-first workflow
 - [Prop Types](https://www.npmjs.com/package/prop-types) - Prop Types for individual components
 - [React](https://reactjs.org/) - JS library
