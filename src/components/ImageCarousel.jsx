@@ -78,6 +78,13 @@ const CarouselWrapper = styled.section`
     width: 100%;
   }
 
+  .splide__arrow {
+    background-color: hsl(var(--white));
+    opacity: 1;
+    height: 4rem;
+    width: 4rem;
+  }
+
   img {
     display: block;
     width: 100%;
@@ -93,6 +100,10 @@ const CarouselWrapper = styled.section`
     gap: 3.2rem;
     max-width: 80%;
     margin: 0 auto;
+
+    .splide__arrow {
+      display: none;
+    }
 
     .thumbnails {
       display: flex;
